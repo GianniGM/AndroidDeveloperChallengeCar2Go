@@ -23,12 +23,7 @@ class NetworkUtils {
             .build()
             .create(MyService::class.java)
 
-    private var totalPages: Int = 100
-    private var selectedPage: Int = 0
-        get() {
-            return if (field >= totalPages) totalPages else field
-        }
-
+    private var selectedPage: Int = 1
     fun getPhotosFromService(): Single<MutableList<Photo>>? {
         return retrofit
                 .getPhotos(
