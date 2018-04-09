@@ -10,6 +10,10 @@ import retrofit2.http.Query
  */
 
 interface MyService {
-    @GET("photos")
-    fun getPhotos(@Query("client_id") clientId: String, @Query("page") page: Int): Single<Photo>
+    @GET("photos/")
+    fun getPhotos(
+            @Query("client_id") clientId: String,
+            @Query("page") page: Int
+    ): Single<MutableList<Photo>>
+
 }

@@ -1,6 +1,8 @@
 package giangraziano.it.androiddeveloperchallengecar2go.network
 
 import giangraziano.it.androiddeveloperchallengecar2go.model.Photo
+import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
@@ -12,27 +14,28 @@ import java.util.*
  * Created by ggmodica on 09/04/18.
  */
 
-class NetworkUtils(private var service: MyService? = null) {
+class NetworkUtils {
 
-    companion object {
-        fun createService(): MyService? {
-            return Retrofit.Builder()
-                    .baseUrl(NetworkData.baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build()
-                    .create(MyService::class.java)
+    private val retrofit = Retrofit.Builder()
+            .baseUrl(NetworkData.baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+            .create(MyService::class.java)
 
+    private var totalPages: Int = 100
+    private var selectedPage: Int = 0
+        get() {
+            return if (field >= totalPages) totalPages else field
         }
+
+    fun getPhotosFromService(): Single<MutableList<Photo>>? {
+        return retrofit
+                .getPhotos(
+                        NetworkData.client_id,
+                        selectedPage++
+                )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
-
-    fun getPhotos(page: Int): Observable<Photo> {
-        if (service == null)
-            this.service = createService()
-
-        return service?.getPhotos(NetworkData.client_id, page)
-                ?.subscribeOn(Schedulers.io())
-                ?.observeOn(AndroidSchedulers.mainThread())
-    }
-
 }
