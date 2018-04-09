@@ -15,14 +15,14 @@ fun RecyclerView.setColumnsLayout(ctx: Context) {
     layoutManager = GridLayoutManager(ctx, nColumns)
 }
 
-fun RecyclerView.onScrollToEnd(onScrollNearEnd: (Unit) -> Unit) =
+fun RecyclerView.onScrollToEnd(whenScrollCloseToEnd: (Unit) -> Unit) =
         addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
 
                 val manager = layoutManager as GridLayoutManager
                 if (manager.childCount + manager.findFirstVisibleItemPosition()
-                        >= layoutManager.itemCount - 20) {  //if near fifth item from end
-                    onScrollNearEnd(kotlin.Unit)
+                        >= layoutManager.itemCount - 40) {
+                    whenScrollCloseToEnd(kotlin.Unit)
                 }
             }
         })
