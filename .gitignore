@@ -39,3 +39,6 @@ project.properties
 # Gradle-based build
 .gradle
 build/
+
+# Android Files with Sensible data
+NetworkData.kt
