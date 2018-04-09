@@ -9,36 +9,36 @@ data class Error(
 )
 
 data class Photo(
-        private val id: String?,
-        private val urls: Urls,
-        private val created_at: String?,
-        private val updated_at: String?,
-        private val width: Long?,
-        private val height: Long?,
-        private val color: String?,
-        private val likes: Int?,
-        private val description: String?,
-        private val user: User?
+        val id: String?,
+        val urls: Urls,
+        val created_at: String?,
+        val updated_at: String?,
+        val width: Long?,
+        val height: Long?,
+        val color: String?,
+        val likes: Int?,
+        val description: String?,
+        val user: User?
 )
 
 data class Urls(
-        private val raw: String?,
-        private val full: String?,
-        private val regular: String?,
-        private val small: String?,
-        private val thumb: String?
+        val raw: String?,
+        val full: String?,
+        val regular: String?,
+        val small: String?,
+        val thumb: String?
 )
 
 data class User(
-        private val id: String?,
-        private val username: String?,
-        private val name: String?,
-        private val profile_image: ProfileImage?
+        val id: String?,
+        val username: String?,
+        val name: String?,
+        val profile_image: ProfileImage?
 )
 
 data class ProfileImage(
-        private val small: String?,
-        private val medium: String?,
-        private val large: String?
+        val small: String?,
+        val medium: String?,
+        val large: String?
 )
 
