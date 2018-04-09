@@ -1,9 +1,9 @@
 package giangraziano.it.androiddeveloperchallengecar2go
 
-import android.net.Network
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
 import giangraziano.it.androiddeveloperchallengecar2go.adapters.PhotoListAdapter
@@ -42,9 +42,10 @@ class MainActivity : AppCompatActivity() {
         network.getPhotosFromService()
                 ?.subscribe({
                     (recyclerView.adapter as PhotoListAdapter).setData(it)
-                    hideProgressBar(true, null)
+                    Log.d(TAG, it.toString())
+                    hideProgressBar(true)
                 }, {
-                    hideProgressBar(false, null)
+                    Log.e(TAG, it.localizedMessage)
                 })
     }
 
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.visibility = RecyclerView.GONE
     }
 
-    private fun hideProgressBar(loadingSuccess: Boolean, messageText: String?) {
+    private fun hideProgressBar(loadingSuccess: Boolean) {
         progress_bar.visibility = ProgressBar.GONE
         recyclerView.visibility = if (loadingSuccess) RecyclerView.VISIBLE else RecyclerView.GONE
         error_text_message.visibility = if (loadingSuccess) TextView.GONE else TextView.VISIBLE
