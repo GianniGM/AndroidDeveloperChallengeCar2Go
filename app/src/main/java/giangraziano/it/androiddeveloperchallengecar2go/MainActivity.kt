@@ -9,8 +9,13 @@ import android.widget.TextView
 import giangraziano.it.androiddeveloperchallengecar2go.adapters.PhotoListAdapter
 import giangraziano.it.androiddeveloperchallengecar2go.extensions.onScrollToEnd
 import giangraziano.it.androiddeveloperchallengecar2go.extensions.setColumnsLayout
+import giangraziano.it.androiddeveloperchallengecar2go.network.MyService
+import giangraziano.it.androiddeveloperchallengecar2go.network.NetworkData
 import giangraziano.it.androiddeveloperchallengecar2go.network.NetworkUtils
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,15 +29,22 @@ class MainActivity : AppCompatActivity() {
         items_list
     }
 
-    private val network = NetworkUtils()
+    private lateinit var network: NetworkUtils
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        network = NetworkUtils(Retrofit.Builder()
+                .baseUrl(NetworkData.baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+                .create(MyService::class.java)
+        )
+
         showProgressBar()
         serve()
-
         recyclerView.onScrollToEnd {
             serve()
         }
