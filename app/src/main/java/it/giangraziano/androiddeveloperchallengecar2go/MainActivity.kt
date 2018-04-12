@@ -6,13 +6,12 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
-import it.giangraziano.androiddeveloperchallengecar2go.R
+import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkData
 import it.giangraziano.androiddeveloperchallengecar2go.adapters.PhotoListAdapter
 import it.giangraziano.androiddeveloperchallengecar2go.extensions.onScrollToEnd
 import it.giangraziano.androiddeveloperchallengecar2go.extensions.setColumnsLayout
 import it.giangraziano.androiddeveloperchallengecar2go.network.UnsplashService
-import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkData
-import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkUtils
+import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkLogic
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -30,13 +29,13 @@ class MainActivity : AppCompatActivity() {
         items_list
     }
 
-    private lateinit var network: NetworkUtils
+    private lateinit var network: NetworkLogic
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        network = NetworkUtils(Retrofit.Builder()
+        network = NetworkLogic(Retrofit.Builder()
                 .baseUrl(NetworkData.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -52,9 +51,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun serve() {
-        network.getPhotosFromService()
+        network.getPhotosFromApi()
                 ?.subscribe({
-                    (recyclerView.adapter as PhotoListAdapter).setData(it)
+                    (recyclerView.adapter as PhotoListAdapter).addData(it)
                     Log.d(TAG, it.toString())
                     hideProgressBar(true)
                 }, {
