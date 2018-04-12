@@ -28,7 +28,6 @@ repositories { jcenter() }
 
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -46,8 +45,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
-    //android + kotlin
-    apply plugin: 'kotlin-android-extensions'
+
 
     testImplementation "org.mockito:mockito-core:2.18.0"
     testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
