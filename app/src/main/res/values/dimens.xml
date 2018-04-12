@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginTextView">8dp</dimen>
+    <dimen name="heightImage">200dp</dimen>
+    <dimen name="widthErrorText">200dp</dimen>
+    <dimen name="linearLayoutElevation">5dp</dimen>
+    <dimen name="LinearLayoutMargin">16dp</dimen>
+    <dimen name="ProgressBarDim">50dp</dimen>
+    <dimen name="imageMargin">8dp</dimen>
+</resources>
