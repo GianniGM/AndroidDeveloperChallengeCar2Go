@@ -1,4 +1,4 @@
-package giangraziano.it.androiddeveloperchallengecar2go
+package it.giangraziano.androiddeveloperchallengecar2go
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

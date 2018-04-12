@@ -1,4 +1,4 @@
-package giangraziano.it.androiddeveloperchallengecar2go
+package it.giangraziano.androiddeveloperchallengecar2go
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -6,12 +6,13 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
-import giangraziano.it.androiddeveloperchallengecar2go.adapters.PhotoListAdapter
-import giangraziano.it.androiddeveloperchallengecar2go.extensions.onScrollToEnd
-import giangraziano.it.androiddeveloperchallengecar2go.extensions.setColumnsLayout
-import giangraziano.it.androiddeveloperchallengecar2go.network.UnsplashService
-import giangraziano.it.androiddeveloperchallengecar2go.network.NetworkData
-import giangraziano.it.androiddeveloperchallengecar2go.network.NetworkUtils
+import it.giangraziano.androiddeveloperchallengecar2go.R
+import it.giangraziano.androiddeveloperchallengecar2go.adapters.PhotoListAdapter
+import it.giangraziano.androiddeveloperchallengecar2go.extensions.onScrollToEnd
+import it.giangraziano.androiddeveloperchallengecar2go.extensions.setColumnsLayout
+import it.giangraziano.androiddeveloperchallengecar2go.network.UnsplashService
+import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkData
+import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

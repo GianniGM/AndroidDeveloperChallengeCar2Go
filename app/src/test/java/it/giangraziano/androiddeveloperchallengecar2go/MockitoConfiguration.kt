@@ -1,4 +1,4 @@
-package giangraziano.it.androiddeveloperchallengecar2go
+package it.giangraziano.androiddeveloperchallengecar2go
 
 import io.reactivex.Observable
 import io.reactivex.Single

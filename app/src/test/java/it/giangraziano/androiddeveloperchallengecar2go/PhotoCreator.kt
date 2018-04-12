@@ -1,8 +1,8 @@
-package giangraziano.it.androiddeveloperchallengecar2go
+package it.giangraziano.androiddeveloperchallengecar2go
 
-import giangraziano.it.androiddeveloperchallengecar2go.model.Photo
-import giangraziano.it.androiddeveloperchallengecar2go.model.Urls
-import giangraziano.it.androiddeveloperchallengecar2go.model.User
+import it.giangraziano.androiddeveloperchallengecar2go.model.Photo
+import it.giangraziano.androiddeveloperchallengecar2go.model.Urls
+import it.giangraziano.androiddeveloperchallengecar2go.model.User
 
 /**
  * Created by ggmodica on 11/04/18.

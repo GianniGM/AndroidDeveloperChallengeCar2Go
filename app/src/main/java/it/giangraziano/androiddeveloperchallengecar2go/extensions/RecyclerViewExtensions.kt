@@ -1,12 +1,10 @@
-package giangraziano.it.androiddeveloperchallengecar2go.extensions
+package it.giangraziano.androiddeveloperchallengecar2go.extensions
 
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 
-/**
- * Created by ggmodica on 09/04/18.
- */
+
 fun RecyclerView.setColumnsLayout(ctx: Context) {
     val displayMetrics = ctx.resources.displayMetrics
     val dpWidth = displayMetrics.widthPixels / displayMetrics.density

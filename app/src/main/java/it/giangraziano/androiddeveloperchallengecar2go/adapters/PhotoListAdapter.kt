@@ -1,4 +1,4 @@
-package giangraziano.it.androiddeveloperchallengecar2go.adapters
+package it.giangraziano.androiddeveloperchallengecar2go.adapters
 
 import android.view.View
 import android.support.v7.widget.RecyclerView
@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
-import giangraziano.it.androiddeveloperchallengecar2go.R
-import giangraziano.it.androiddeveloperchallengecar2go.model.Photo
+import it.giangraziano.androiddeveloperchallengecar2go.R
+import it.giangraziano.androiddeveloperchallengecar2go.model.Photo
 
-/**
- * Created by giannig on 09/04/18.
- */
+
 const val PLACEHOLDER_PICTURE = "http://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder4.png";
 
 class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder>() {

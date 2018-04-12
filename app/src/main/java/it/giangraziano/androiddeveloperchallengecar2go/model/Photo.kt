@@ -1,8 +1,4 @@
-package giangraziano.it.androiddeveloperchallengecar2go.model
-
-/**
- * Created by ggmodica on 09/04/18.
- */
+package it.giangraziano.androiddeveloperchallengecar2go.model
 
 data class Error(
         private val errors: MutableList<String>?
