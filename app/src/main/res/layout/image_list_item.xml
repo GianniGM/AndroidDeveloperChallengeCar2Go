@@ -2,14 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="2dp"
-    android:layout_margin="5dp"
-    android:background="#FFF">
+    android:gravity="center"
+    android:layout_margin="@dimen/LinearLayoutMargin"
+    android:background="@color/white"
+    android:elevation="@dimen/linearLayoutElevation">
+
     <ImageView
         android:id="@+id/item_image_item"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="2dp"
-        android:contentDescription="@string/image_description" />
+        android:layout_height="wrap_content"
+        android:gravity="fill"
+        android:layout_margin="@dimen/imageMargin"
+        />
 
 </LinearLayout>

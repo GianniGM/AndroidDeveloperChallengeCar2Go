@@ -9,8 +9,8 @@
 
     <ProgressBar
         android:id="@+id/progress_bar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/ProgressBarDim"
+        android:layout_height="@dimen/ProgressBarDim"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,24 +20,24 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/items_list"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:visibility="gone"
-        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/error_text_message"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/widthErrorText"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="@dimen/marginTextView"
+        android:layout_marginEnd="@dimen/marginTextView"
+        android:layout_marginStart="@dimen/marginTextView"
+        android:layout_marginTop="@dimen/marginTextView"
         android:text="@string/an_error_occurred"
-        android:textColor="#adadad"
+        android:textColor="@color/colorGrey"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
