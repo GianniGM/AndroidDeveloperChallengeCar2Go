@@ -13,7 +13,7 @@ I wrote this app in a very smooth way thanks to Kotlin, besides, extensions func
 I created a directory called [extensions](https://github.com/GianniGM/AndroidDeveloperChallengeCar2Go/blob/master/app/src/main/java/giangraziano/it/androiddeveloperchallengecar2go/extensions/RecyclerViewExtensions.kt) I use always GridLayoutManager so I used two functions for it: 
 * __setColumnsLayout__ : calculate number of columns and apply a GridLayoutManager.
 
-* __onScrollToEnd__ : for this project i want to launch a lambda every time I am close to the end of the list, i chose to launch lambda every about 40 items (cause I have to elements per row) with less than 40 I had a rough UI experience.
+* __onScrollToEnd__ : for this project i want to launch a lambda every time I am close to the end of the list, i chose to launch lambda with less than 10 items.
 
 Maybe for the future I can extends __onScrollToEnd__ not only for GridLayoutManager (maybe using Generics).
 
