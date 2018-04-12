@@ -1,11 +1,9 @@
 package giangraziano.it.androiddeveloperchallengecar2go
 
-import giangraziano.it.androiddeveloperchallengecar2go.model.Photo
-import giangraziano.it.androiddeveloperchallengecar2go.network.MyService
+import giangraziano.it.androiddeveloperchallengecar2go.network.UnsplashService
 import giangraziano.it.androiddeveloperchallengecar2go.network.NetworkUtils
 import io.reactivex.Single.just
 import io.reactivex.subscribers.TestSubscriber
-import org.junit.Assert.assertThat
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.InjectMocks
@@ -23,7 +21,7 @@ class ServiceTest {
     var rule: MockitoRule = MockitoJUnit.rule()
 
     @Mock
-    private var service: MyService? = null
+    private var service: UnsplashService? = null
 
     @InjectMocks
     private var network: NetworkUtils? = null

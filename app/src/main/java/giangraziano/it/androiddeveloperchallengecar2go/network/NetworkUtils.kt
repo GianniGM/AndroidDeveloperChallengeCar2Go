@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
  * Created by ggmodica on 09/04/18.
  */
 
-class NetworkUtils(private val retrofit: MyService) {
+class NetworkUtils(private val retrofit: UnsplashService) {
 
     private var selectedPage: Int = 1
     fun getPhotosFromService(): Single<MutableList<Photo>>? {

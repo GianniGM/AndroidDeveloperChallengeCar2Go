@@ -9,7 +9,7 @@ import retrofit2.http.Query
  * Created by ggmodica on 09/04/18.
  */
 
-interface MyService {
+interface UnsplashService {
     @GET("photos/")
     fun getPhotos(
             @Query("client_id") clientId: String,

@@ -9,7 +9,7 @@ import android.widget.TextView
 import giangraziano.it.androiddeveloperchallengecar2go.adapters.PhotoListAdapter
 import giangraziano.it.androiddeveloperchallengecar2go.extensions.onScrollToEnd
 import giangraziano.it.androiddeveloperchallengecar2go.extensions.setColumnsLayout
-import giangraziano.it.androiddeveloperchallengecar2go.network.MyService
+import giangraziano.it.androiddeveloperchallengecar2go.network.UnsplashService
 import giangraziano.it.androiddeveloperchallengecar2go.network.NetworkData
 import giangraziano.it.androiddeveloperchallengecar2go.network.NetworkUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
-                .create(MyService::class.java)
+                .create(UnsplashService::class.java)
         )
 
         showProgressBar()
