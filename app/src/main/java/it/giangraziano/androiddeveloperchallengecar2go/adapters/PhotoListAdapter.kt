@@ -9,14 +9,14 @@ import com.squareup.picasso.Picasso
 import it.giangraziano.androiddeveloperchallengecar2go.R
 import it.giangraziano.androiddeveloperchallengecar2go.model.Photo
 
-
-const val PLACEHOLDER_PICTURE = "http://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder4.png";
+//todo remove: put in assets
+const val PLACEHOLDER_PICTURE = "http://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder4.png"
 
 class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder>() {
 
     private var photos: MutableList<Photo> = mutableListOf()
 
-    fun setData(list: MutableList<Photo>){
+    fun addData(list: MutableList<Photo>){
         this.photos.addAll(list)
         notifyDataSetChanged()
     }
@@ -35,19 +35,19 @@ class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder>(
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val item = photos[position]
-        val url: String = item.urls.thumb ?: PLACEHOLDER_PICTURE
 
-        holder.setImage(url)
+        holder.setImage(item.urls.small)
     }
 
     inner class PhotoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val imageView = view.findViewById(R.id.item_image_item) as ImageView
 
-        fun setImage(imageUrl: String) {
+        fun setImage(imageUrl: String?) {
 
             Picasso
                     .get()
                     .load(imageUrl)
+//           todo         .placeholder()
                     .into(imageView)
 
         }
