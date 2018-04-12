@@ -19,7 +19,7 @@ fun RecyclerView.onScrollToEnd(whenScrollCloseToEnd: (Unit) -> Unit) =
 
                 val manager = layoutManager as GridLayoutManager
                 if (manager.childCount + manager.findFirstVisibleItemPosition()
-                        >= layoutManager.itemCount - 40) {
+                        >= layoutManager.itemCount - 10) {
                     whenScrollCloseToEnd(kotlin.Unit)
                 }
             }
