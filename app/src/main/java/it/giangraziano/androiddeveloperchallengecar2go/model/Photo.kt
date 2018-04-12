@@ -1,9 +1,5 @@
 package it.giangraziano.androiddeveloperchallengecar2go.model
 
-data class Error(
-        private val errors: MutableList<String>?
-)
-
 data class Photo(
         val id: String?,
         val urls: Urls,
