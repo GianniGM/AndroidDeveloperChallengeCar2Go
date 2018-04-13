@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MAIN_ACTIVITY"
     }
 
-    private val recyclerView: RecyclerView by lazy {
+    private val photoListRecyclerView: RecyclerView by lazy {
         items_list.setColumnsLayout(this)
         items_list.adapter = PhotoListAdapter()
         items_list
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         showProgressBar()
         serve()
-        recyclerView.onScrollToEnd {
+        photoListRecyclerView.onScrollToEnd {
             serve()
         }
     }
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     private fun serve() {
         network.getPhotosFromApi()
                 ?.subscribe({
-                    (recyclerView.adapter as PhotoListAdapter).addData(it)
+                    (photoListRecyclerView.adapter as PhotoListAdapter).addData(it)
                     Log.d(TAG, it.toString())
                     hideProgressBar(true)
                 }, {
@@ -64,12 +64,12 @@ class MainActivity : AppCompatActivity() {
     private fun showProgressBar() {
         progress_bar.visibility = ProgressBar.VISIBLE
         error_text_message.visibility = TextView.GONE
-        recyclerView.visibility = RecyclerView.GONE
+        photoListRecyclerView.visibility = RecyclerView.GONE
     }
 
     private fun hideProgressBar(loadingSuccess: Boolean) {
         progress_bar.visibility = ProgressBar.GONE
-        recyclerView.visibility = if (loadingSuccess) RecyclerView.VISIBLE else RecyclerView.GONE
+        photoListRecyclerView.visibility = if (loadingSuccess) RecyclerView.VISIBLE else RecyclerView.GONE
         error_text_message.visibility = if (loadingSuccess) TextView.GONE else TextView.VISIBLE
     }
 }
