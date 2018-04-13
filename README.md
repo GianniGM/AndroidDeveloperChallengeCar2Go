@@ -1,6 +1,8 @@
 # Android Developer Challenge - Car2Go
 
-<img src="https://raw.githubusercontent.com/GianniGM/AndroidDeveloperChallengeCar2Go/master/sample_image.jpg" width=250>
+<img src="https://i.imgur.com/iMnmyzX.png" width=250>
+
+
 
 ___
 ## Why Kotlin?
