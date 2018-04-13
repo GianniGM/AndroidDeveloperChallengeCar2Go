@@ -1,5 +1,6 @@
 package it.giangraziano.androiddeveloperchallengecar2go.adapters
 
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -10,7 +11,7 @@ import it.giangraziano.androiddeveloperchallengecar2go.R
 import it.giangraziano.androiddeveloperchallengecar2go.model.Photo
 
 //todo remove: put in assets
-const val PLACEHOLDER_PICTURE = "http://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder4.png"
+const val PLACEHOLDER_FILE_PATH = "placeholder.png"
 
 class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder>() {
 
@@ -35,19 +36,24 @@ class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder>(
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val item = photos[position]
-
         holder.setImage(item.urls.small)
     }
 
-    inner class PhotoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class PhotoViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val imageView = view.findViewById(R.id.item_image_item) as ImageView
+
+        private fun getDrawablePlaceHolder(): Drawable {
+            val ctx = view.context
+            val stream = ctx.assets.open(PLACEHOLDER_FILE_PATH)
+            return Drawable.createFromStream(stream, null)
+        }
 
         fun setImage(imageUrl: String?) {
 
             Picasso
                     .get()
                     .load(imageUrl)
-//           todo         .placeholder()
+                    .placeholder(getDrawablePlaceHolder())
                     .into(imageView)
 
         }
