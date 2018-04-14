@@ -8,15 +8,13 @@ import io.reactivex.schedulers.Schedulers
 
 class NetworkLogic(private val retrofit: UnsplashService) {
 
-    private var selectedPage: Int = 1
+    var selectedPage: Int = 0
+        private set
 
     fun getPhotosFromApi(): Single<MutableList<Photo>>? {
-        return retrofit
-                .getPhotos(
-                        NetworkData.client_id,
-                        selectedPage++
-                )
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+        return retrofit.getPhotos(
+                NetworkData.client_id,
+                ++selectedPage
+        )
     }
 }
