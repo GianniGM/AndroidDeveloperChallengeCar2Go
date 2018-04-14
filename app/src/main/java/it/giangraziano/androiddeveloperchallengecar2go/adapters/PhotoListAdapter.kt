@@ -36,7 +36,7 @@ class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder>(
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val item = photos[position]
-        holder.setImage(item.urls.small)
+        holder.setImage(item.urls.small, item.description)
     }
 
     inner class PhotoViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -48,13 +48,15 @@ class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder>(
             return Drawable.createFromStream(stream, null)
         }
 
-        fun setImage(imageUrl: String?) {
+        fun setImage(imageUrl: String?, description: String?) {
 
             Picasso
                     .get()
                     .load(imageUrl)
                     .placeholder(getDrawablePlaceHolder())
                     .into(imageView)
+
+            imageView.contentDescription=description
 
         }
     }
