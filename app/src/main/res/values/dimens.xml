@@ -4,7 +4,7 @@
     <dimen name="heightImage">200dp</dimen>
     <dimen name="widthErrorText">200dp</dimen>
     <dimen name="linearLayoutElevation">5dp</dimen>
-    <dimen name="LinearLayoutMargin">16dp</dimen>
+    <dimen name="LinearLayoutMargin">8dp</dimen>
     <dimen name="ProgressBarDim">50dp</dimen>
-    <dimen name="imageMargin">2dp</dimen>
+    <dimen name="imageMargin">4dp</dimen>
 </resources>
