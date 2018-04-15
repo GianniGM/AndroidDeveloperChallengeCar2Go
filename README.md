@@ -28,7 +28,7 @@ I used several libraries both for network and async stuff:
 ### Network and Async
 For the network I could choose to use __Loaders__ or __jobScheduler__, at the end I chose technology I wanted to go deep more: [RxJava](https://github.com/ReactiveX/RxJava).
 
-I already had experience with __Retrofit__ so first requirements was to bind these two libraries and to do this I used retrofit's [RxJava Adapters](https://github.com/square/retrofit/tree/master/retrofit-adapters/rxjava).
+I already had experience with [Retrofit](http://square.github.io/retrofit/) so first requirements was to bind these two libraries and to do this I used retrofit's [RxJava Adapters](https://github.com/square/retrofit/tree/master/retrofit-adapters/rxjava).
 
 As we know __RxJava__ isn't asynchronous by default so I wanted to observe my task on a main thread as I would have done using a Loader, so to use RxJava on android on its best I used [RxAndroid](https://github.com/ReactiveX/RxAndroid) so I could observe on the main thread
 
@@ -59,6 +59,15 @@ ___
 ### Improvements
 Open a second Activity with details when I tap on selected Image
 
-### Note
+### Personal Notes
 Writing this app has stimulated me a lot, in particular pushed to me to investigate more about all the test stuff.
 I realize that there's really a lot of things to learn about Android tests.
+___
+## Mentioned Libraries:
+* Retrofit: http://square.github.io/retrofit/
+* RxJava: https://github.com/ReactiveX/RxJava
+* RxJava Adapters: https://github.com/square/retrofit/tree/master/retrofit-adapters/rxjava
+* Roboelectric: http://robolectric.org/
+* Mockito: http://site.mockito.org/
+* RxAndroid: https://github.com/ReactiveX/RxAndroid
+* Picasso: http://square.github.io/picasso/
