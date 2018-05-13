@@ -13,6 +13,7 @@ import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkData
 import it.giangraziano.androiddeveloperchallengecar2go.adapters.PhotoListAdapter
 import it.giangraziano.androiddeveloperchallengecar2go.extensions.onScrollToEnd
 import it.giangraziano.androiddeveloperchallengecar2go.extensions.setLayoutManager
+import it.giangraziano.androiddeveloperchallengecar2go.model.Photo
 import it.giangraziano.androiddeveloperchallengecar2go.network.UnsplashService
 import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkLogic
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,7 +21,10 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainView {
+    override fun onError(error: String) {
+        Log.e(MainActivity.TAG, error)
+    }
 
     companion object {
         private const val TAG = "MAIN_ACTIVITY"
@@ -32,13 +36,13 @@ class MainActivity : AppCompatActivity() {
         items_list
     }
 
-    private lateinit var network: NetworkLogic
+    private lateinit var presenter: Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        network = NetworkLogic(Retrofit.Builder()
+        val network = NetworkLogic(Retrofit.Builder()
                 .baseUrl(NetworkData.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -46,33 +50,27 @@ class MainActivity : AppCompatActivity() {
                 .create(UnsplashService::class.java)
         )
 
+        presenter = PresenterImpl(this, network)
         showProgressBar()
-        serve()
+        presenter.serve()
         photoListRecyclerView.onScrollToEnd {
-            serve()
+            presenter.serve()
         }
     }
 
-    private fun serve() {
-        network.getPhotosFromApi()
-                ?.subscribeOn(Schedulers.io())
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe({
-                    (photoListRecyclerView.adapter as PhotoListAdapter).addData(it)
-                    Log.d(TAG, it.toString())
-                    hideProgressBar(true)
-                }, {
-                    Log.e(TAG, it.localizedMessage)
-                })
+    override fun addData(list: MutableList<Photo>) {
+        (photoListRecyclerView.adapter as PhotoListAdapter).addData(list)
+        Log.d(MainActivity.TAG, list.toString())
     }
 
-    private fun showProgressBar() {
+
+    override fun showProgressBar() {
         progress_bar.visibility = ProgressBar.VISIBLE
         error_text_message.visibility = TextView.GONE
         photoListRecyclerView.visibility = RecyclerView.GONE
     }
 
-    private fun hideProgressBar(loadingSuccess: Boolean) {
+    override fun hideProgressBar(loadingSuccess: Boolean) {
         progress_bar.visibility = ProgressBar.GONE
         photoListRecyclerView.visibility = if (loadingSuccess) RecyclerView.VISIBLE else RecyclerView.GONE
         error_text_message.visibility = if (loadingSuccess) TextView.GONE else TextView.VISIBLE
