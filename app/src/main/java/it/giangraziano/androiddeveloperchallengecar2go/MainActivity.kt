@@ -3,16 +3,16 @@ package it.giangraziano.androiddeveloperchallengecar2go
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkData
 import it.giangraziano.androiddeveloperchallengecar2go.adapters.PhotoListAdapter
 import it.giangraziano.androiddeveloperchallengecar2go.extensions.onScrollToEnd
-import it.giangraziano.androiddeveloperchallengecar2go.extensions.setColumnsLayout
+import it.giangraziano.androiddeveloperchallengecar2go.extensions.setLayoutManager
 import it.giangraziano.androiddeveloperchallengecar2go.network.UnsplashService
 import it.giangraziano.androiddeveloperchallengecar2go.network.NetworkLogic
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val photoListRecyclerView: RecyclerView by lazy {
-        items_list.setColumnsLayout(this)
+        items_list.setLayoutManager<StaggeredGridLayoutManager>(this)
         items_list.adapter = PhotoListAdapter()
         items_list
     }
